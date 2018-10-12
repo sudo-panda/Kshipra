@@ -26,4 +26,4 @@ Kshipra goes through a three fold process to detect the potential high-risk area
 
 ## Conclusion
 
-Kshipra,meaning remover of obstacle aims to follow on his name and protect,save the populace from a disaster which has been a prevelant problem in the world  
+To make Kshipra accessible to all, a lite version of the site shall run paralelly to the main site. In the lite version all the User has to do is enter his location,instead of using a live map, and Kshipra shall display if he's in a safe zone or not which will reduce internet data consumption considerably. Landslides have been a relatively smaller scale natural disaster but it's deadly nonetheless and landslides in India are more frequent than any other part of the world. Kshipra,meaning remover of obstacle aims to follow on his name and protect,save the populace from a disaster which has been a prevelant problem in India and the World. 
