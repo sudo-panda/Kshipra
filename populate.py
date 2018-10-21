@@ -95,7 +95,7 @@ def slope(data,rows,cols,X,Y):
 
 
 
-def main():
+def populate():
     dataset=list(csv.reader( open("landslidedata.csv",'r'),delimiter=','))
     lc=0
     for row in dataset:
@@ -112,8 +112,8 @@ def main():
                         lc+=1
                         continue
                     try:
-                        X=float(row[29])#Make 30
-                        Y=float(row[30])#Make 29
+                        X=float(row[29])
+                        Y=float(row[30])
 
                         rows = 9
                         cols = 9
@@ -152,4 +152,4 @@ def main():
         lc+=1
 
 if __name__=="__main__":
-    main()
+    populate()
