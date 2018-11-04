@@ -1,11 +1,58 @@
+from keras.models import Sequential
+from keras.layers import Dense
+import numpy as np
+import csv
+import random as rn
 import urllib.request
 import urllib.error
 import math
-import numpy as np
 import cv2 as cv
-import csv
 import time
+import os
+# fix random seed for reproducibility
+np.random.seed(42)
 
+# The below is necessary for starting core Python generated random numbers
+# in a well-defined state.
+
+rn.seed(12345)
+
+
+
+
+from keras.models import load_model
+def inp1(X,Y):
+    
+    url="https://api.darksky.net/forecast/d67f5cbba560136ea307952b60ff38fb/"+str(X)+","+str(Y)
+    data = str(urllib.request.urlopen(url).read(100000))
+    index=data.find("daily")
+    data=data[data.find('"precipIntensityMax":',index)+21:]
+    data=data[:data.find(",")]
+    
+    data=float(data)
+    print(data)
+    
+    rain_limit=0.5
+
+    downpour_limit=8
+    
+    
+    flooding_limit=50
+    continuousrain_limit=20
+    if(data<rain_limit):
+        data1=1
+    if(data>rain_limit and data<downpour_limit):
+        data1=2
+    if(data>downpour_limit and data<continuousrain_limit):
+        data1=3
+    if(data>continuousrain_limit and data<flooding_limit):
+        data1=4
+    if(data>flooding_limit):
+        data1=5
+    
+
+    return data1
+    
 def inp(X,Y,rows,cols):
     dist_B_W_L = 111.320 #distance in km between latitudes and longitudes in the equator
     rng = 1 #distance in km of the area of which we need to find elevation
@@ -79,7 +126,10 @@ def pixelValue(X,Y):
     else:
         YS=str(YI)+"E"
     try:
-        Mat = cv.imread("LC_Data/SLC_"+XS+"_"+YS+".tif",0)
+        Mat = cv.imread("Kshipra/LC_Data/SLC_"+XS+"_"+YS+".tif",0)#TODO repair this
+        if Mat is None :
+            Mat = cv.imread("LC_Data/SLC_"+XS+"_"+YS+".tif",0)
+        print(os.getcwd())
         return Mat[int(400*(X-XI))][int(400*(Y-YI))]
     except Exception as e:
         print("Error in finding pixel Value: \n",e)
@@ -93,62 +143,42 @@ def slope(data,rows,cols,X,Y):
     return [float(alt)/float(dist),avg]
 
 
+def populate(X,Y):
+    X=float(X)#Latitude
+    Y=float(Y)#Longitude
+    rows = 9
+    cols = 9
+    data=inp(X,Y,rows,cols)
+    E=getElevation(data,rows,cols)
 
-def populate():
-    dataset=list(csv.reader( open("landslidedata.csv",'r'),delimiter=','))
-    lc=0
-    for row in dataset:
-        try:
-            if(row[21]!="IN"):
-                lc+=1
-                continue
-            try:
-                if lc==0:
-                    lc+=1
-                    continue
-                try:
-                    if(row[31]!="" and row[32]!=""):
-                        lc+=1
-                        continue
-                    try:
-                        X=float(row[29])
-                        Y=float(row[30])
+    data1=inp1(X,Y)
+    data,data2=slope(E,rows,cols,X,Y)
+    X1=np.array([[str(data),str(data2),str(data1)]])
+    print(X1)
 
-                        rows = 9
-                        cols = 9
-                        data=inp(X,Y,rows,cols)
-                        E=getElevation(data,rows,cols)
-                        s,avg=(slope(E,rows,cols,X,Y))
-                        if(row[31]==""):
-                            row[31]=str(s)
-                        if(row[32]==""):
-                            row[32]=str(avg)
-                        try:
-                            with open('landslidedata.csv','w',newline='') as fl1:
-                                f=csv.writer(fl1)
-                                f.writerows(list(dataset))
-                                fl1.flush()
-                            print("Done calculating ",lc)
-                            time.sleep(0.2)
-                        except Exception as e:
-                            print("Error 5 in main in parsing index no ",lc," :\n",e)
-                            lc+=1
-                            continue
-                    except Exception as e:
-                        print("Error 4 in main in parsing index no ",lc," :\n",e)
-                        lc+=1
-                        continue
-                except Exception as e:
-                    print("Error 3 in main in parsing index no ",lc," :\n",e)
-                    lc+=1
-                    continue
-            except Exception as e:
-                print("Error 2 in main in parsing index no ",lc," :\n",e)
-                lc+=1
-                continue
-        except Exception as e:
-            print("Error 1 in main in parsing index no ",lc," :\n",e)
-        lc+=1
+    try:
+        nn_data=nn(np.array([[str(data),str(data2),str(data1)]]))
+        print(nn_data)
+        pred_diff=np.round(nn_data*10000)
+        print (float(pred_diff)/100)
+        return float(pred_diff)/100
+    except Exception as e:
+        print("Error\n\t",e)
+        return -1
+        #Call this to get the landslide estimation in all weather and the last index is the current landslide prediction
 
-if __name__=="__main__":
-    populate()
+
+def nn(X1):
+    new_model=load_model('Kshipra/my_model.h5')
+
+
+
+
+    predictions = new_model.predict(X1)
+    # round predictions
+    rounded = np.array([X1[0] for X1 in predictions])
+
+    return rounded# round predictionsc"""
+
+if __name__ == "__main__":
+    print(populate(13.360501,74.786369))

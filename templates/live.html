@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="{{ url_for('static', filename = 'css/images/icons/icon.png') }}?000001"/>
+    <title>
+        Kshipra
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+     
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> 
+
+    <link href="https://fonts.googleapis.com/css?family=K2D|Rhodium+Libre" rel="stylesheet"> 
+
+    
+
+    <style>
+        * {box-sizing: border-box;}
+        html{
+            position: relative;
+        }
+        
+        body { 
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .header {
+          display:block;
+          position: fixed;
+          width: 100%;
+          top: 0;
+          overflow: hidden;
+          padding: 0px 10px;
+          z-index: 10;
+        }
+
+        .sticky{
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5), 0 3px 10px 0 rgba(0,0,0,0.19);
+          background-color: #2e2e2e;
+        }
+        
+
+
+        .header a {
+          float: left;
+          color: black;
+          text-align: center;
+          text-decoration: none;
+          font-size: 150%; 
+          line-height: 25px;
+          border-radius: 4px;
+        }
+        
+        .header img{
+            display: none;
+        }
+
+        .sticky img{
+            display: inherit;
+        }
+
+        .header a.logo {
+          font-size: 25px;
+          font-weight: bold;
+          padding: 4px
+        }
+        
+        .header a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+        
+        .header a.active {
+          background-color:#333333;
+          color: white;
+          padding-left:50px;
+          padding-right:50px;
+
+          font-size: 100%; 
+        }
+
+        .header-right a.active {    
+          color: white;
+          margin: 4px 10px;
+          padding: 10px 50px;
+          font-size: 100%;
+        }
+        
+        .header-right {
+          float: right;
+        }
+
+        @media (orientation: portrait) {
+            .loc {
+                border-radius: 25px;
+            }
+        }
+
+        .parallax {
+            /* The image used */
+            background-image: url('/static/css/images/map.png?00003');
+            
+            /* Set a specific height */
+            min-height: 500px; 
+            z-index:-1;
+            
+            /* Create the parallax scrolling effect */
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #bttn:hover{
+            background-color: blueviolet;
+        }
+        
+        #bttn {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a500ff+0,9800ff+49,6a00ff+50,cb00ff+100 */
+background: rgb(165,0,255); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(165,0,255,1) 0%, rgba(152,0,255,1) 49%, rgba(106,0,255,1) 50%, rgba(203,0,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(165,0,255,1) 0%,rgba(152,0,255,1) 49%,rgba(106,0,255,1) 50%,rgba(203,0,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(165,0,255,1) 0%,rgba(152,0,255,1) 49%,rgba(106,0,255,1) 50%,rgba(203,0,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a500ff', endColorstr='#cb00ff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+        }
+
+    </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
+<body class="parallax" style="height: 100%;font-family: 'K2D', sans-serif;color: white">
+    <div class="header  " id="myHeader">
+        <a href="/" class="logo"><img class="im" id="imga" style="height:44px;width: 44px;"src="{{ url_for('static', filename = 'css/images/icons/icon.png') }}?000002""></a>
+        <div class="header-right">
+          <a class="active" href="/lite">Go Lite</a>
+        </div>
+    </div>
+    <div style="/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,b0b6b7+50,111412+51,000000+100&0.78+0,0.38+100 */
+    background: -moz-linear-gradient(-45deg, rgba(0,0,0,0.78) 0%, rgba(176,182,183,0.58) 50%, rgba(17,20,18,0.58) 51%, rgba(0,0,0,0.38) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(-45deg, rgba(0,0,0,0.78) 0%,rgba(176,182,183,0.58) 50%,rgba(17,20,18,0.58) 51%,rgba(0,0,0,0.38) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(135deg, rgba(0,0,0,0.78) 0%,rgba(176,182,183,0.58) 50%,rgba(17,20,18,0.58) 51%,rgba(0,0,0,0.38) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c7000000', endColorstr='#61000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */padding-top:100px;text-align:center;min-height: 100%;">
+    <div class="container">
+            <img class="im" style="height:40%;width: 40%;border-radius: 70%;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5), 0 3px 10px 0 rgba(0,0,0,0.19);"src={{ url_for('static', filename = 'css/images/icons/icon.png') }}>
+        <h1 id="Title" class="animated fadeInDown " style="font-family: 'K2D', sans-serif;margin-top: 3%;margin-bottom: 1%;text-shadow: 2px 2px 2px #111111">Kshipra</h1>
+        <h3 class="animated fadeInUp " style="font-family: 'Rhodium Libre', serif;margin-bottom: 5%;z-index: 1;">क्षिप्रा</h3>
+        <h4 style = "text-shadow: 1px 2px 1px #333333 ">
+            The trodden path is not always the safest. Being two steps ahead is an all-weather winning strategy.
+            Nature is vicious and predicting its upheaval is difficult, but that is where Kshipra comes in.
+        </h4>
+    </div>
+    </div>
+    <div style="background-color: rgba(85, 85, 85, 0.938); padding-top:100px;">
+        <a name="Form"></a>
+        <div class="container"style="text-align:center;min-height: 100vh;">
+                <form style="align-content: center; padding-top: 25%" method="POST" action="{{ url_for('result') }}" onload="getLocation()">
+                    <h1>
+                        Enter Coordinates
+                        </h1>
+                    <br>
+                    <input id="lat" class="loc animated fadeInLeft" type='text' name="latitude" value='LATITUDE' style="text-align:right;border-width: 0px;padding:10px;border-bottom-left-radius:25px;border-top-left-radius:25px;color:#888;" onfocus="inputFocus(this)" onblur="inputBlur(this)" onload="getCoords">
+                    <input id="long" class="loc animated fadeInRight"type='text' name="longitude" value='LONGITUDE' style="border-width: 0px;padding:10px;border-bottom-right-radius:25px;border-top-right-radius:25px;color:#888;" onfocus="inputFocus(this)" onblur="inputBlur(this)">
+                    <br>
+                        {% if error=='1' %}
+                        <div style="color: rgb(114, 0, 0); padding-top:20px;padding-bottom: 20px;font-size: 20px">Please enter correct longitude and latitude </div>
+                        {% elif error=='2' %}
+                        <div style="color: rgb(255, 237, 73); padding-top:20px;padding-bottom: 20px;font-size: 20px">There was a problem retrieving the data please try again.</div>
+                        {% endif %}
+                    <br>
+                    <input id="bttn" type="submit" value="Submit" style="border-radius:25px;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5), 0 3px 10px 0 rgba(0,0,0,0.19);padding: 10px 50px;color: white;border: 0;border-width: 0px;">
+                    <br>
+                        {% if r!='-1' %}
+                        {%if r|int < 60  %}
+                        <div style="color: rgb(159, 255, 81); padding-top:20px;padding-bottom: 20px;font-size: 20px"><i class="fas fa-info" style="font-size: 150%;margin: 10px;"></i>Kshipra detects {{r}}% probability of a landslide occuring here due to curent weather conditions</div>
+                        {% else %}
+                        <div style="color: rgb(238, 0, 0); padding-top:20px;padding-bottom: 20px;font-size: 20px"><i class="fas fa-exclamation-triangle" style="font-size: 150%;margin: 10px;"></i>Kshipra detects {{r}}% probability of a landslide occuring here due to curent weather conditions</div>
+                        {% endif %}
+                        {% endif %}
+                    <br>
+                    <div style="color: rgb(255, 255, 255); padding-top:50px;padding-bottom: 20px;font-size: 20px">Only some areas(like India) are supported right now.</div>
+                </form> 
+        </div>
+    </div>
+    <div style="background-color: rgba(51, 51, 51, 0.952); padding:100px 10% 50px 10%;">
+            <div style="text-align:center;height: 70vh;">
+                    <iframe  width="100%" height="100%" src="https://www.youtube.com/embed/m7xUJxymSWo" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                    </iframe>
+            </div>
+    </div>
+
+    <div style="bottom:0;background-color: #111111;min-height: 30%;width: 100%;padding-top:30px ;font-size: 15px;">
+            <div class=container style="text-align: center;line-height: 15px">
+                <h4>Made By:</h4>
+                <p>{{name[0]}}</p>
+                <p>{{name[1]}}</p>
+                <p>{{name[2]}}</p>
+                <br>
+                <br>
+                <p>Find our project on github:</p>
+                <i class="fab fa-github" style="font-size:35px ;margin-bottom: 30px;"><a href="http://www.github.com/Baidya99/Kshipra"></a></i>
+            </div>
+    </div>
+
+
+    <script>
+        {% if error!='0' %}
+        window.location.hash="Form";
+        {% endif %}
+
+        {% if r!='-1' %}
+        window.location.hash="Form";
+        {% endif %}
+        window.onscroll = function() {myFunction()};
+
+        var header = document.getElementById("myHeader");
+        var sticky = header.offsetTop;
+        
+        var textbox1= document.getElementById("lat");
+        var textbox2= document.getElementById("long");
+        var nam=document.getElementById("Title");
+        var nam1 = nam.offsetTop;
+        var imga=document.getElementById("Title");
+        var nam2 = imga.offsetTop;
+
+        function myFunction() {
+          if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+          } else {
+            header.classList.remove("sticky");
+          }
+
+          if (window.pageYOffset > nam2) {
+            textbox2.classList.add("fadeInRight");
+            textbox1.classList.add("fadeInLeft");
+          } else {
+            textbox2.classList.remove("fadeInRight");
+            textbox1.classList.remove("fadeInLeft");
+          }
+        }
+        function inputFocus(i) {
+            if (i.value == i.defaultValue) { i.value = ""; i.style.color = "#000"; }
+        }
+        function inputBlur(i) {
+            if (i.value == "") { i.value = i.defaultValue; i.style.color = "#888"; }
+        }
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            }
+        }
+        function showPosition(position) {
+            var x = document.getElementById("lat");
+            var y = document.getElementById("long");
+            x.value =position.coords.latitude;
+            y.value =position.coords.longitude;
+        }
+        
+        function querySt(ji) {
+
+            hu = window.location.search.substring(1);
+            gy = hu.split("&");
+            
+            for (i=0;i<gy.length;i++) {
+                ft = gy[i].split("=");
+                if (ft[0] == ji) {
+                   return ft[1];
+                }
+            }
+        }
+
+        function getCoords(){
+            document.getElementById('lat').value = querySt("lat");
+            document.getElementById('long').value = querySt("long");
+        }
+
+
+    </script>
+</body>
+</html>
