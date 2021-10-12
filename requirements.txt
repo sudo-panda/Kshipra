@@ -5,5 +5,5 @@ Jinja2==2.10.1
 MarkupSafe==1.0
 Werkzeug==0.15.3
 keras==2.2.4
-opencv-python==3.4.2.17
+opencv-python==3.4.7.28
 tensorflow==1.15.4
